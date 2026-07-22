@@ -20,9 +20,10 @@ function TerminalHeader() {
     )
 }
 
-function TerminalBody() {
+function TerminalBody({ onDone }: { onDone: () => void}) {
     const command = "run emily_lou_profile.exe";
     const [text, setText] = useState("");
+    const [done, setDone] = useState(false);
 
     useEffect(() => {
         let i = 0;
@@ -36,9 +37,16 @@ function TerminalBody() {
 
                 if (i >= command.length) {
                     window.clearInterval(timer);
-                }
-            }, 100)
 
+                    window.setTimeout(() => {
+                        setDone(true);
+                    }, 850);
+
+                    window.setTimeout(() => {
+                        onDone();
+                    }, 2000)
+                }
+             }, 130)
         }, 1800);
 
         return () => {
@@ -53,8 +61,16 @@ function TerminalBody() {
                 <span> visitor@emilys-website </span>
                 <span> ~ %</span>
                 <span>{text}</span>
-                <span className="ml-1 animate-pulse [animation-duration:0.2s"> █</span>
+                <span className="ml-1 animate-pulse [animation-duration:1s]"> █</span>
             </div>
+
+            {done && (
+                <div className="mt-3 text-white flex items-start gap-2">
+                    <span> visitor@emilys-website</span>
+                    <span>~ %</span>
+                    <span className="ml-1 animate-pulse">█</span>
+                </div>
+            )}
         </div>
     );
 }
@@ -79,7 +95,7 @@ const [open, setOpen] = useState(false);
     >
         <div className="rounded-t-lg shadow-2xl overflow-hidden">
             <TerminalHeader />
-            <TerminalBody />
+            <TerminalBody onDone={() => setOpen(false)} />
         </div>
     </div>
   )
