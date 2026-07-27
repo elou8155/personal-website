@@ -24,6 +24,7 @@ function TerminalBody({ onDone }: { onDone: () => void}) {
     const command = "run emily_lou_profile.exe";
     const [text, setText] = useState("");
     const [done, setDone] = useState(false);
+    const [showFirstCursor, setShowFirstCursor] = useState(true)
 
     useEffect(() => {
         let i = 0;
@@ -40,13 +41,14 @@ function TerminalBody({ onDone }: { onDone: () => void}) {
 
                     window.setTimeout(() => {
                         setDone(true);
-                    }, 850);
+                        setShowFirstCursor(false);
+                    }, 950);
 
                     window.setTimeout(() => {
                         onDone();
-                    }, 2000)
+                    }, 2200)
                 }
-             }, 130)
+             }, 150)
         }, 1800);
 
         return () => {
@@ -56,12 +58,14 @@ function TerminalBody({ onDone }: { onDone: () => void}) {
     }, []);
 
     return (
-        <div className="bg-grey px-5 py-2 pb-40 font-mono text-sm sm:text-base">
+        <div className="bg-grey px-5 py-2 pb-40 font-mono h-50 text-sm sm:text-base">
             <div className="text-white flex items-start gap-2">
                 <span> visitor@emilys-website </span>
                 <span> ~ %</span>
                 <span>{text}</span>
-                <span className="ml-1 animate-pulse [animation-duration:1s]"> █</span>
+                {showFirstCursor && (
+                    <span className="ml-1 animate-pulse [animation-duration:1s]"> █</span>
+                )}
             </div>
 
             {done && (

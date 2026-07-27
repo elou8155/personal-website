@@ -19,10 +19,11 @@ export default function Nav() {
                 </button>
 
                 <ul className={`hidden sm:flex gap-6 ${open ? "block" : ""}`}>
-                    <li><Link href="#experiences"> Experience</Link></li>
+                    <li><Link href="#about">About Me</Link></li>
+                    <li><Link href="#experience"> Experience</Link></li>
                     <li><Link href="#projects">Projects</Link></li>
-                    <li><Link href="#Skills">Skills</Link> </li>
-                    <li><Link href="#Contact">Contact</Link></li>
+                    <li><Link href="#skills">Skills</Link> </li>
+                    <li><Link href="#contact">Contact</Link></li>
                 </ul>
             </nav>
         </header>
