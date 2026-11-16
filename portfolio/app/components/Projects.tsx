@@ -2,16 +2,16 @@ import ProjectCard from "./ProjectCard";
 
 const projects = [
 {
-    title: "Project One",
+    title: "RAG Chatbot for HPC User Support",
     description: "description",
     image: "",
-    technologies: ["tech1", "tech2"]
+    technologies: ["RAG", "Python", "PyTorch", "Flask", "REST API", "LangChain","vLLM", "FAISS", "Intel oneAPI"]
 },
 {
-    title: "Project Two",
-    description: "description",
-    image: "",
-    technologies: ["tech1", "tech2"]
+    title: "Finch",
+    description: "Won best AggieX Startup @ TAMU Build4Good 2026",
+    image: "/images/finch_image.jpg",
+    technologies: ["React", "Next.js", "Typescript", "Tailwind CSS"]
 },
 {
     title: "Project Three",
