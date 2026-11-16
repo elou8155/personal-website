@@ -29,7 +29,7 @@ const projects = [
 export default function Projects(){
     return(
         <section id="projects" className="px-10 py-10 mx-auto">
-            <h2>Projects</h2>
+            <h1>Persona Project Portfolio</h1>
             <div className="grid grid-cols-2 gap-6">
                 {projects.map((project) => (
                     <ProjectCard key={project.title} {...project} />

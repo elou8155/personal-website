@@ -7,7 +7,6 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
-import Contact from "./components/Contact";
 
 // Set to true to show the animated terminal again.
 const SHOW_TERMINAL = false;
@@ -16,7 +15,6 @@ const tabs = [
   {id: "about", label: "About Me"},
   {id: "experience", label: "Experience"},
   {id: "projects", label: "Projects"},
-  {id: "contact", label: "Contact"},
 ];
 
 const sections: Record<string, React.ReactNode> = {
@@ -24,7 +22,6 @@ const sections: Record<string, React.ReactNode> = {
   about: <About />,
   experience: <Experience />,
   projects: <Projects />,
-  contact: <Contact />,
 };
 
 // The open tab lives in the URL hash (e.g. /#projects), so links,

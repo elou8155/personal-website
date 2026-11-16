@@ -31,10 +31,12 @@ const WELL_X = (BOX_COLS - COLS) / 2;
 // Canvas resolution per block (the canvas is scaled down by CSS)
 const CELL = 32;
 
-// Hold / Next panels, in blocks. Pieces, labels and panel width are 30% larger
-// than the original; the slot height is limited by the box being only 13 rows
-// tall (3 Next slots + label must fit).
-const PANEL_SCALE = 1.3;
+// Hold / Next panels, in blocks. The slot height is limited by the box being
+// only 13 rows tall (3 Next slots + label must fit), so the pieces are as big as
+// the slots allow (the tallest piece, the 2-row O, takes 2.8 of 3.45).
+const PANEL_SCALE = 1.3; // panel width and line weight
+const PREVIEW_BLOCK = 1.4; // size of one block in the Hold / Next pieces
+const LABEL_SIZE = 0.9; // HOLD / NEXT label text height
 const SIDE_COLS = (BOX_COLS - COLS) / 2; // free columns on each side of the board
 const PANEL_W = 6 * PANEL_SCALE;
 const PANEL_TOP = 1.9;
@@ -82,7 +84,7 @@ function drawPreview(
     area: {x: number; y: number; w: number; h: number},
     alpha = 1
 ) {
-    const size = CELL * 0.8 * PANEL_SCALE;
+    const size = CELL * PREVIEW_BLOCK;
     const cells = previewCells(type);
     const rows = cells.map(([r]) => r);
     const cols = cells.map(([, c]) => c);
@@ -142,7 +144,7 @@ function draw(ctx: CanvasRenderingContext2D, game: Game) {
     const nextX = (WELL_X + COLS + (SIDE_COLS - PANEL_W) / 2) * CELL;
     const top = PANEL_TOP * CELL;
     const slotH = SLOT_H * CELL;
-    ctx.font = `bold ${CELL * 0.5 * PANEL_SCALE}px ui-monospace, SFMono-Regular, Menlo, monospace`;
+    ctx.font = `bold ${CELL * LABEL_SIZE}px ui-monospace, SFMono-Regular, Menlo, monospace`;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "rgb(255 255 255 / 0.6)";

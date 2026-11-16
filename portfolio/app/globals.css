@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cream: #FAF8F5;
-  --color-ink: #2f2924;
+  --color-page: #2C2D2F; /* the website's background: dark grey */
+  --color-ink: #F1EFEB; /* main text color: light, so it reads on the dark background */
   --color-rose: #c78183;
   --color-grey: #48494B;
 }
 
 body{
-  @apply bg-cream text-ink;
+  @apply bg-page text-ink;
 }
 
 /* Tetris "EMILY" banner on the About Me tab: each letter drops in, left to right */
@@ -18,9 +18,9 @@ body{
 }
 
 .tetris-box {
-  /* Block size scales with the available width, up to 16.1989px (19.0575px - 15%);
-     the box fills at most 73.631% of its container's width */
-  --cell: min(16.1989px, calc(73.631cqw / var(--cols)));
+  /* Block size scales with the available width, up to 13.769px (16.1989px - 15%);
+     the box fills at most 62.586% of its container's width */
+  --cell: min(13.769px, calc(62.586cqw / var(--cols)));
   position: relative;
   /* The border sits outside the 30 x 13 grid, so blocks stay perfectly square */
   box-sizing: content-box;
@@ -28,8 +28,8 @@ body{
   height: calc(var(--cell) * var(--rows));
   margin: 0 auto;
   overflow: hidden;
-  border: 2.55px solid var(--color-grey);
-  border-radius: 5.1px;
+  border: 2.17px solid rgb(255 255 255 / 0.28); /* light edge, so it shows on the grey page */
+  border-radius: 4.34px;
   background-color: #15120f;
   background-image:
     linear-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px),
@@ -108,12 +108,13 @@ body{
   color: white;
   text-align: center;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: calc(var(--cell) * 0.8);
+  font-size: calc(var(--cell) * 1);
 }
 
 .tetris-overlay strong {
-  font-size: calc(var(--cell) * 1.3);
-  letter-spacing: 0.05em;
+  /* "GAME OVER" is 9 characters and has to stay on one line within the 10-block-wide board */
+  font-size: calc(var(--cell) * 1.45);
+  letter-spacing: 0.02em;
 }
 
 .tetris-overlay-action {
@@ -122,14 +123,14 @@ body{
 
 .tetris-overlay-sub {
   opacity: 0.6;
-  font-size: calc(var(--cell) * 0.7);
+  font-size: calc(var(--cell) * 0.85);
 }
 
 .tetris-score {
   margin-top: 0.85rem;
   text-align: center;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.935rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 
@@ -137,11 +138,28 @@ body{
   margin-top: 0.64rem;
   text-align: center;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.884rem; /* the controls line */
-  color: rgb(47 41 36 / 0.65);
+  font-size: 0.95rem; /* the controls line */
+  color: color-mix(in srgb, var(--color-ink) 65%, transparent);
+}
+
+/* Experience timeline entries fade in as they scroll into view (see Reveal.tsx) */
+.reveal {
+  opacity: 0;
+  transform: translateY(0.75rem);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
   .tetris-letter {
     animation: none;
   }
