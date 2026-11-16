@@ -3,7 +3,6 @@
 import {useSyncExternalStore} from "react";
 import Nav from "./components/Nav";
 import Terminal from "./components/Terminal";
-import Hero from "./components/Hero";
 import About from "./components/About";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
@@ -18,11 +17,13 @@ const tabs = [
 ];
 
 const sections: Record<string, React.ReactNode> = {
-  home: <Hero />,
   about: <About />,
   experience: <Experience />,
   projects: <Projects />,
 };
+
+// The homepage: shown at "/" and whenever the address doesn't name a tab
+const DEFAULT_TAB = "about";
 
 // The open tab lives in the URL hash (e.g. /#projects), so links,
 // refresh, and the back/forward buttons all work.
@@ -41,11 +42,11 @@ function subscribe(onChange: () => void) {
 
 function getActiveTab() {
   const hash = window.location.hash.slice(1);
-  return tabs.some((tab) => tab.id === hash) ? hash : "home";
+  return tabs.some((tab) => tab.id === hash) ? hash : DEFAULT_TAB;
 }
 
 function getServerActiveTab() {
-  return "home";
+  return DEFAULT_TAB;
 }
 
 export default function Home(){
@@ -53,7 +54,8 @@ export default function Home(){
 
   const changeTab = (id: string) => {
     if (id === activeTab) return;
-    const url = id === "home" ? window.location.pathname : `#${id}`;
+    // The homepage gets the clean address "/", the other tabs get "/#tab"
+    const url = id === DEFAULT_TAB ? window.location.pathname : `#${id}`;
     window.history.pushState(null, "", url);
     window.dispatchEvent(new Event(TAB_CHANGE_EVENT));
     window.scrollTo(0, 0);
