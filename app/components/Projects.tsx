@@ -14,9 +14,9 @@ const projects = [
     technologies: ["React", "Next.js", "Typescript", "Tailwind CSS"]
 },
 {
-    title: "Project Three",
-    description: "description",
-    image: "",
+    title: "ML Neural Signal Classifier",
+    description: "LSTM-based deep learning model to classify cognitive states from neural signals",
+    image: "/images/neural_signals.png",
     technologies: ["tech1", "tech2"]
 },
 {

@@ -40,10 +40,6 @@ export default function ProjectCard({
                     </span>
                 ))}
             </div>
-
-
-
-
             </div>
 
         </div>
