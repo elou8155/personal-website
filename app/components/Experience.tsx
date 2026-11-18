@@ -82,9 +82,9 @@ const BLOCK_BEVEL = "inset 2px 2px 0 rgb(255 255 255 / 0.35), inset -2px -2px 0 
 
 export default function Experience(){
     return(
-        <section id="experience" className="mx-auto px-6 pb-20 md:px-15">
+        <section className="mx-auto px-6 pb-20 md:px-15">
             <div className="mx-auto max-w-4xl pt-12">
-                <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">Experience</h2>
+                <h2 className="text-4xl text-rose font-semibold tracking-tight sm:text-5xl">Experience</h2>
 
                 <ol className="mt-10 ml-2 border-l border-ink/15">
                     {EXPERIENCE.map((role, index) => {

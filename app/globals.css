@@ -3,9 +3,9 @@
 @theme {
   --color-page: #2C2D2F; /* the website's background: dark grey */
   --color-ink: #F1EFEB; /* main text color: light, so it reads on the dark background */
-  --color-rose: #c78183;
+  --color-rose: #deafb0;
   --color-grey: #48494B;
-}
+  --color-blue: #4a7fb5;}
 
 body{
   @apply bg-page text-ink;
@@ -154,7 +154,59 @@ body{
   transform: none;
 }
 
+/* Project popup, opened from a project tile (see ProjectDialog.tsx) */
+.project-dialog {
+  margin: auto;
+  width: min(42rem, calc(100% - 2rem));
+  max-height: calc(100dvh - 2rem);
+  padding: 0;
+  border: 0;
+  border-radius: 1rem;
+  overflow: auto;
+  background: var(--color-grey);
+  color: var(--color-ink);
+  box-shadow: 0 25px 60px rgb(0 0 0 / 0.5);
+}
+
+.project-dialog[open] {
+  animation: dialog-in 200ms ease-out;
+}
+
+.project-dialog::backdrop {
+  background: rgb(0 0 0 / 0.6);
+  animation: backdrop-in 200ms ease-out;
+}
+
+/* Keep the page from scrolling behind an open popup */
+body:has(.project-dialog[open]) {
+  overflow: hidden;
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .project-dialog[open],
+  .project-dialog::backdrop {
+    animation: none;
+  }
   .reveal {
     opacity: 1;
     transform: none;

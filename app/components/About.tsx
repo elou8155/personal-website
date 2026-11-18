@@ -36,14 +36,16 @@ const LINKS: LinkItem[] = [
 
 export default function About(){
     return (
-        <section id="about" className="px-15 mx-auto pb-20">
+        // No id on the sections: with tabs there is nothing to scroll to, and an id
+        // matching the address (/#about) makes the browser jump down to the section
+        <section className="px-15 mx-auto pb-20">
             <TetrisName />
 
             <div className="mx-auto mt-6 grid max-w-4xl items-center gap-10 md:grid-cols-[minmax(0,1fr)_auto] md:gap-14">
                 {/* Left: about me */}
                 <div>
-                    <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">Emily Lou</h2>
-                    <p className="mt-3 text-lg font-medium">Texas A&amp;M University – College Station</p>
+                    <h2 className="text-4xl text-rose font-semibold tracking-tight sm:text-5xl">Emily Lou</h2>
+                    <p className="mt-3 text-lg text-rose font-medium">Texas A&amp;M University – College Station</p>
                     <p className="text-ink/70">B.S. in Computer Science · Graduating December 2027</p>
 
                     <div className="mt-6 space-y-4 leading-relaxed text-ink/85">
