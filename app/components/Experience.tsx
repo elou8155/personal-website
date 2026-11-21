@@ -33,7 +33,7 @@ const EXPERIENCE: Role[] = [
     },
     {
         title: "Summer Research Intern",
-        organization: "National Science Foundation (NSF) REU Program",
+        organization: "NSF REU Program (AI-Driven Resilient Health and Biological Systems)",
         start: "2025-05",
         end: "2025-07",
         bullets: [

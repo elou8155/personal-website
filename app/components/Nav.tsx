@@ -25,7 +25,7 @@ export default function Nav({tabs, activeTab, onTabChange}: NavProps) {
     return (
         <header className="sticky top-0 z-40 bg-page/90 backdrop-blur-sm">
             <nav className="mx-auto max-w-7xl flex flex-wrap items-center justify-between p-4">
-                <Link href="/" className="font-semibold" onClick={(event) => selectTab(event, "about")}> Emily Lou</Link>
+                <Link href="/" className="font-semibold text-rose" onClick={(event) => selectTab(event, "about")}> Emily Lou</Link>
 
                 <button
                     className="sm:hidden"

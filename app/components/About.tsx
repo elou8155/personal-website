@@ -50,18 +50,13 @@ export default function About(){
 
                     <div className="mt-6 space-y-4 leading-relaxed text-ink/85">
                         <p>
-                            Hi, welcome to my corner of the internet! I&apos;ve always enjoyed solving
-                            challenging puzzles, whether it&apos;s a tricky bug, a new algorithm, or a round
-                            of the Tetris game above. That same curiosity is what I bring to computer science.
+                            Hello! I have always loved solving puzzles from playing games like tetris to activities like rock climbing. 
+                            I enjoy experimenting with new technologies and seeing what solutions I can create. 
                         </p>
                         <p>
-                            I love building thoughtful technology that connects people, ideas, and
-                            experiences, from AI tools like a RAG chatbot for HPC user support to Finch, a
-                            web app that won Best AggieX Startup at TAMU Build4Good 2026.
-                        </p>
-                        <p>
-                            Thanks for stopping by! Feel free to explore my projects, or say hello by
-                            email, on LinkedIn, or on GitHub. I&apos;d love to connect.
+                            Recently, I've been learning how to use AI efficiently and responsibly when working
+                            on projects. I am still managing how to balance leveraging new tools and developing 
+                            my own problem-solving skills.
                         </p>
                     </div>
 
